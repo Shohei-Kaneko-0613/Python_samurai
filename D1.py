@@ -9,5 +9,5 @@ class Shape:
                     print("#",end="")
             print()
 
-Shape1 = Shape(5)
-Shape1.draw()
+shape1 = Shape(5)
+shape1.draw()

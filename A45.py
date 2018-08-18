@@ -1,8 +1,7 @@
 import re
 def number_count(x):
     s=0
-    z=0
-    for m in re.finditer('\d+\.*\d*',x): #整数のみ探す
+    for m in re.finditer('\d+\.*\d*',x):
         print(m.group())
         s+=float(m.group())
 

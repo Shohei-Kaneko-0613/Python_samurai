@@ -1,14 +1,14 @@
 def center2(x):#偶数
     k=0
-    list = sorted(x.values())
-    k=len(list)//2
-    return (list[k-1]+list[k])//2
+    L1 = sorted(x.values())
+    k=len(L1)//2
+    return (L1[k-1]+L1[k])//2
     
 def center1(x):#奇数
     m=0
-    list = sorted(x.values())
-    m=(len(list)/2)-0.5
-    return list[int(m)]
+    L2 = sorted(x.values())
+    m=(len(L2)/2)-0.5
+    return L2[int(m)]
 
 x={ 'aaa':10 , 'bbb':20 , 'ccc':30 , 'ddd':40 , 'eee':50 , 'fff':60}
 y={ 'aaa':10 , 'bbb':20 , 'ccc':30 , 'ddd':40 , 'eee':50}

@@ -19,15 +19,14 @@ class Person:
 people = []
  
 people.append(Person("man",4,"Choge hogeo"))
-people.append(Person("woman",2,"Bhoge hogeko"))
-people.append(Person("man",3,"Ahoge hogetaro"))
-people.append(Person("man",1,"Zhoge"))
+people.append(Person("woman",1,"Bhoge hogeko"))
+people.append(Person("man",10,"Ahoge hogetaro"))
+people.append(Person("man",-1,"Zhoge"))
 
-L=[]
-for person in people:
-    s=person.age,person.name
-    L.append(s)
-x=sorted(L)
-for i in x:
-    print(i[1])
-
+def name_sorted(x):
+    people_sorted = sorted(people, key=lambda x:x.age)
+    for i in people_sorted:
+        print(i.sex,i.age,i.name)
+    
+x=people
+name_sorted(x)

@@ -28,5 +28,4 @@ def name_sorted(x):
     for i in people_sorted:
         print(i.sex,i.age,i.name)
     
-x=people
-name_sorted(x)
+name_sorted(people)

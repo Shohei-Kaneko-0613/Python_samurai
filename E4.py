@@ -12,8 +12,6 @@ def make_app():
 }
     return tornado.web.Application([
     (r"/", MainHandler),
-    (r"/(index\.png)", tornado.web.StaticFileHandler,
-     dict(path=settings['static_path'])),
 ], **settings)
 
 if __name__ == "__main__":

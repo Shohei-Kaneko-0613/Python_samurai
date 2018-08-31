@@ -8,24 +8,15 @@ class MainHandler(tornado.web.RequestHandler):
 
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
-        button1=self.get_argument('but1','2')
-        button1=self.get_argument('but3','')
-        #button1=self.get_argument('2','2')
-        #button1=self.get_argument('3','3')
-        print(button1)
-#        print(button2)
-#        print(button3)
-'''
+        button1=self.get_argument('but1','')
+
         if button1==str(1):
-            self.write(button1)
-            self.write("button1")
+            self.write("click1")
         elif button1==str(2):
-            self.write(button1)
-            self.write("button2")
+            self.write("click2")
         elif button1==str(3):
-            self.write(button1)
-            self.write("button3")
-'''
+            self.write("click3")
+
 
 def make_app():
     settings = {

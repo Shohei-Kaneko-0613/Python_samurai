@@ -4,16 +4,18 @@ import os
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("static/E7.html")
+        self.render("static/E8.html")
 
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
-        text1=str(self.get_argument('text1'))
-        file="static/E7.html"
-        with open(file,mode='r+') as f:
-            f.seek(92)
-            f.write(text1)
-        self.render("static/E7.html")
+        number=int(self.get_argument('num1'))
+        if number==1:
+            self.render("static/E8-1.html")
+        elif number==2:
+            self.render("static/E8-2.html")
+        else:
+            self.render("static/E8-3.html")
+
 
 def make_app():
     settings = {

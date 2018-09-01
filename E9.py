@@ -1,21 +1,23 @@
 import tornado.ioloop
 import tornado.web
 import os
+import json
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("static/E7.html")
+        self.render("static/E9.html")
 
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
-        item=[]
-        text1=self.get_argument('text1')
-        
-        item.append(text1)
-        #print(item)
-
-        self.render("static/E7.html",item=item)
-
+        text=self.get_argument('text1')
+        password=self.get_argument('pass1')
+        f = open("static/E9-usr-pass","r")
+        json_dict=json.load(f)
+        x='{}'.format(json_dict[text]["pw"])
+        if password == x:
+            self.render("static/E9_OK.html")
+        else:
+            self.render("static/E9_NG.html")
 
 def make_app():
     settings = {

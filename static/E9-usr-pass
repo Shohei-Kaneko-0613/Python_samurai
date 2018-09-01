@@ -1,0 +1,14 @@
+{
+    "amazon_usr": {
+        "id": "amazon_usr", 
+        "pw": "amazon_pass"
+    }, 
+    "google_usr": {
+        "id": "google_usr", 
+        "pw": "google_pass"
+    }, 
+    "facebook_usr": {
+        "id": "facebook_usr", 
+        "pw": "facebook_pass"
+    }
+}

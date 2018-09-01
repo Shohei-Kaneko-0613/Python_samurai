@@ -13,8 +13,10 @@ class MainHandler_post(tornado.web.RequestHandler):
             self.render("static/E8-1.html")
         elif number==2:
             self.render("static/E8-2.html")
-        else:
+        elif number==3:
             self.render("static/E8-3.html")
+        else:
+            self.write("入力可能な数字は１〜３です。")
 
 
 def make_app():

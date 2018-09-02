@@ -9,19 +9,20 @@ class MainHandler(tornado.web.RequestHandler):
 
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
-        text=self.get_argument('text1')
+        usr_name=self.get_argument('text1')
         password=self.get_argument('pass1')
-        if text == "amazon_usr" or text == "google_usr" or text == "facebook_usr":
-            f = open("static/E9-usr-pass","r")
-            json_dict=json.load(f)
-            x='{}'.format(json_dict[text]["pw"])
-            y='{}'.format(json_dict[text]["id"])
-            if text == y and password == x:
+        f = open("static/E9-usr-pass","r")
+        json_dict=json.load(f)
+        try:
+            x=json_dict[usr_name]["pw"]
+            y=json_dict[usr_name]["id"]
+
+            if usr_name==y and password == x:
                 self.render("static/E9_OK.html")
             else:
                 self.render("static/E9_NG.html")
-        else:
-            self.render("static/E9-1.html")
+        except KeyError:
+            self.render("static/E9_NG.html")
 
 
 def make_app():

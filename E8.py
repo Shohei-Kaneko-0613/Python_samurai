@@ -5,16 +5,19 @@ import os
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("static/E8.html")
-
+       
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
         number=int(self.get_argument('num1'))
         if number==1:
-            self.render("static/E8-1.html")
+            number="index"
+            self.render("static/E8_img.html",num1=number)
         elif number==2:
-            self.render("static/E8-2.html")
+            number="apple"
+            self.render("static/E8_img.html",num1=number)
         elif number==3:
-            self.render("static/E8-3.html")
+            number="applelogo"
+            self.render("static/E8_img.html",num1=number)
         else:
             self.write("入力可能な数字は１〜３です。")
 

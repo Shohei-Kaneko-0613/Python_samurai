@@ -9,9 +9,9 @@ class MainHandler(tornado.web.RequestHandler):
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
         number=self.get_argument('num1')
-        Dict={"1":"index","2":"apple","3":"applelogo"}
-        if number==str(1) or number==str(2) or number==str(3):
-            self.render("static/E8_img.html",num1=Dict[number])
+        mappings={"1":"index","2":"apple","3":"applelogo"}
+        if number in mappings:
+            self.render("static/E8_img.html",num1=mappings[number])
         else:
             self.write("入力可能な数字は１〜３です。")
 

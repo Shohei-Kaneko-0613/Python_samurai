@@ -1,0 +1,27 @@
+<html>
+<head>
+
+<script>
+function count_chk(form) {
+  var total = 0;
+  var max = form.chk_box.length;
+  for (var index = 0; index < max; index++) {
+    if (eval("document.area_chk.chk_box[" + index + "].checked") == true) {
+      total += 1;
+    }
+  }
+  alert("あなたは、 " + total + " 個　チェックしました。");
+}
+</script>
+
+</head>
+<body>
+<form method="post" name=area_chk>
+1<input type=checkbox name=chk_box>　
+2<input type=checkbox name=chk_box>　
+3<input type=checkbox name=chk_box>　
+4<input type=checkbox name=chk_box>　
+5<input type=checkbox name=chk_box><br>
+<input type=button value="カウントする" onClick="count_chk(this.form)">
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+<body>
+<form method="post" id="form">
+<input type=checkbox name=chk_box>　
+<input type=checkbox name=chk_box>　
+<input type=checkbox name=chk_box>　
+<input type=checkbox name=chk_box>　
+<input type=checkbox name=chk_box>　
+</form>
+<input type=button value="カウントする" onClick="count_chk()">
+
+<script>
+    function count_chk(){
+        var check_box = document.getElementById("form");
+        var count = 0;
+        for (var i = 0; i<check_box.length; i++){
+            console.log(check_box[i].checked);
+            if(check_box[i].checked){
+                count++;
+                console.log(count);
+            }
+        }
+            alert(count);
+    }
+</script>
+</body>
+</html>

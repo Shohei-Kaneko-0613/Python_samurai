@@ -4,12 +4,23 @@
    </head>
     <body>
      <p>hello,world</p>
-     <form method="post">
-     <input type="checkbox" name="check1" value="1">Japan
-     <input type="checkbox" name="check2" value="1">USA
-     <input type="checkbox" name="check3" value="1">China
-     <input type="checkbox" name="check4" value="1">Germany
-     <input type="checkbox" name="check5" value="1">England
-     <input type="submit">
+     <input type="button" id="check" value="追加" onClick="add_chk()">
+     <input type="button" id="check "value="削除" onClick="del_chk()">
+     <script>
+         function add_chk(){
+             var add_elem = document.createElement("input");
+                 add_elem.setAttribute("type", "checkbox");
+                 add_elem.setAttribute("id", "checkbox");
+                 document.body.appendChild(add_elem);
+             var len = document.getElementsByTagName("input");
+             if (len.length >=8) {
+             add_elem.parentNode.removeChild(add_elem);
+             }
+         }
+         function del_chk(){
+             var del_elem = document.getElementById("checkbox");
+             del_elem.parentNode.removeChild(del_elem); 
+         }
+     </script>
     </body>
  </html>

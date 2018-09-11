@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-<form id="form">
+<form name="form">
 <input type=checkbox name=chk_box>　
 <input type=checkbox name=chk_box>　
 <input type=checkbox name=chk_box>　
@@ -13,8 +13,10 @@
 
 <script>
     function count_chk(){
+var toString = Object.prototype.toString
         var check_box = document.getElementsByName("chk_box");
-        console.log(check_box)
+        // console.log(check_box instanceof Array);
+        console.log(toString.call([check_box]));
         var count = 0;
         for (var i = 0; i<check_box.length; i++){
             console.log(check_box[i].checked);

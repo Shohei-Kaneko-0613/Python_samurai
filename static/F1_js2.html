@@ -14,6 +14,7 @@
 <script>
     function count_chk(){
         var check_box = document.getElementById("form");
+        console.log(typeof(check_box))
         var count = 0;
         for (var i = 0; i<check_box.length; i++){
             console.log(check_box[i].checked);

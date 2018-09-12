@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+   </head>
+    <body>
+     <p id="count1"></p>
+     <button type="button" onClick="start()">push_start</button>
+     <script>
+      var count=10
+          var count =10;
+          var countup = function(){
+          var countup = document.getElementById("count1").innerText = count;
+          count--;
+          }
+          var id = setInterval(function(){
+              countup();
+              if(count < 0){
+                  clearInterval(id);
+              }},1000);
+     
+     </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+   </head>
+    <body>
+     <p id="count"></p>
+     <button onClick="push">push</button>
+     <script>
+          
+          var num =10;
+          var tgt = 0;
+          var speed = 1000;
+          setInterval(function(){
+              if(num=>tgt){
+                  document.getElementById("count").innerText = num;
+                  num--;
+              }
+              
+      },speed);
+     </script>
+    </body>
+</html>

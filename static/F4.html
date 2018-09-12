@@ -3,20 +3,24 @@
    <head>
    </head>
     <body>
-     <p id="count"></p>
-     <button onClick="push">push</button>
+     <p id="count1">10</p>
+     <input type="button" onClick="start()" value="push_start">
      <script>
-          
-          var num =10;
-          var tgt = 0;
-          var speed = 1000;
-          setInterval(function(){
-              if(num=>tgt){
-                  document.getElementById("count").innerText = num;
-                  num--;
+//          var count =10;
+          function start(){
+          var count =10;
+              var countup = function(){
+              var countup = document.getElementById("count1").innerText = count;
+              count--;
               }
-              
-      },speed);
+              var id = setInterval(function(){
+              countup();
+              if(count < 0){
+                  clearInterval(id);
+              }},1000);
+              }
+          
+          
      </script>
     </body>
 </html>

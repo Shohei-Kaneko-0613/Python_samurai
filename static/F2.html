@@ -8,21 +8,27 @@
      <button type="button" onClick="del_chk()">削除</button>
      <script>
          function add_chk(){
+             
              var add_elem = document.createElement("input");
                  add_elem.setAttribute("type", "checkbox");
-                 add_elem.setAttribute("id", "checkbox");
-                 document.body.appendChild(add_elem);
+                 add_elem.setAttribute("name", "checkbox");
+                 add_elem.setAttribute("class", "checkbox");
              var len = document.getElementsByTagName("input");
-             console.log(len.length)
-             if (len.length >5) {
-             add_elem.parentNode.removeChild(add_elem);
+                 if (len.length < 5) {
+                 document.body.appendChild(add_elem);
+             } else if (len.length >5) {
+             
              }
          }
          function del_chk(){
-             if (document.getElementById("checkbox")){
-                 var del_elem = document.getElementById("checkbox");
-                 del_elem.parentNode.removeChild(del_elem);
-             }else{ 
+             //if (document.getElementsByTagName("input")){
+                 console.log(document.getElementsByTagName("input"))
+                 var del_elem = document.getElementsByTagName("input");
+                 var del_array = Array.from(del_elem)
+                 console.log(del_array.length)
+             if (del_elem.length>0){
+                 del_elem[0].remove();
+             }else if (del_array.length==0){ 
                  alert("削除できる要素がありません。");
              }
          }

@@ -21,12 +21,11 @@
              }
          }
          function del_chk(){
-             //if (document.getElementsByTagName("input")){
-                 console.log(document.getElementsByTagName("input"))
-                 var del_elem = document.getElementsByTagName("input");
-                 var del_array = Array.from(del_elem)
-                 console.log(del_array.length)
-             if (del_elem.length>0){
+             console.log(document.getElementsByTagName("input"))
+             var del_elem = document.getElementsByTagName("input");
+             var del_array = Array.from(del_elem)
+             console.log(del_array.length)
+             if (del_array.length>0){
                  del_elem[0].remove();
              }else if (del_array.length==0){ 
                  alert("削除できる要素がありません。");

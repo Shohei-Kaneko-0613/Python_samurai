@@ -11,23 +11,17 @@
              
              var add_elem = document.createElement("input");
                  add_elem.setAttribute("type", "checkbox");
-                 add_elem.setAttribute("name", "checkbox");
-                 add_elem.setAttribute("class", "checkbox");
              var len = document.getElementsByTagName("input");
                  if (len.length < 5) {
                  document.body.appendChild(add_elem);
-             } else if (len.length >5) {
              
              }
          }
          function del_chk(){
-             console.log(document.getElementsByTagName("input"))
              var del_elem = document.getElementsByTagName("input");
-             var del_array = Array.from(del_elem)
-             console.log(del_array.length)
-             if (del_array.length>0){
+             if (del_elem.length>0){
                  del_elem[0].remove();
-             }else if (del_array.length==0){ 
+             }else{ 
                  alert("削除できる要素がありません。");
              }
          }

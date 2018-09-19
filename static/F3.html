@@ -3,13 +3,31 @@
    <head>
    </head>
     <body>
-     <p id="count">10</p>
-     <button type="button" onClick="count_start()">カウントスタート</button>
+     <p>曜日を選択してください。</p>
+     <select id="week" multiple="multiple">
+     <option value="Mon">Monday</option>
+     <option value="Tue">Tuesday</option>
+     <option value="Wed">Wednesday</option>
+     <option value="Thu">Thursday</option>
+     <option value="Fri">Friday</option>
+     <option value="Sat">Saturday</option>
+     <option value="Sun">Sunday</option>
+     </select>
+     <input type="button" value="ボタン" onClick="check_week()">
      <script>
-         function count_start(){
-             
+         function check_week(){
+             var x = document.getElementById("week");
+             var x2 = x.options ;
+                          
+             console.log(x2.selectedIndex)
+             //複数選択コード
+             //var x2 = x.options ;
+             //for ( var a="", i=0,l=x.length; l>i; i++ ) {
+             //    if ( x[i].selected ) {
+             //        a += x[i].value + " " ;                     
+             //    }
+             //}
          }
      </script>
     </body>
  </html>
-~                                        

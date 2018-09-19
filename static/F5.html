@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>ajax test</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <script>
+            $("#send").click(function(){
+                var option = {
+                    url: "/upload",
+                    tpe: "POST",
+                    data: { input_data: $("input_data").value },
+                    timeout: 1000
+                }
+                $.ajax(option).done(ajax_done).fail(ajax_fail);
+            });
+ 
+            function ajax_done(data){
+                $("#display_data").innerText = data;
+            }
+ 
+            function ajax_fail(data){
+                $("#display_data").innerText = "Failed to receive data.";
+            }
+        </script>
+        <form>
+            <input type="text" id="input_data">
+            <input type="button" id="send" value="send">
+        </form>
+        <div id="display_data"></div>
+    </body>
+</html>

@@ -11,8 +11,12 @@ class MainHandler(tornado.web.RequestHandler):
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
         post_data = self.get_argument("filename","test_post.py")
-        subprocess.call(["python", post_data])
-        
+        #subprocess.call(["python", post_data])
+
+        yaml_data = self.get_argument("","")
+        path = yaml_data + post_data
+        if os.path.exists(path):
+            subprocess.call(["python", post_data])
 
 def make_app():
     settings = {

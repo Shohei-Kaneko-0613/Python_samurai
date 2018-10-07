@@ -11,13 +11,21 @@ class MainHandler(tornado.web.RequestHandler):
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
         post_data = self.get_argument("filename","test_post.py")
-        #subprocess.call(["python", post_data])
+        data = subprocess.check_output(["cat", post_data])
 
-        yaml_data = self.get_argument("","")
-        path = yaml_data + post_data
-        if os.path.exists(path):
-            subprocess.call(["python", post_data])
+        DOWNLOAD_SAVE_DIR = "/Users/kanekoshohei/Documents/Git/Python/samurai/"
+        saveFilePath = os.path.join(DOWNLOAD_SAVE_DIR, "test_post.py")
+        with open(saveFilePath,"wb") as saveFile:
+            saveFile.write(data)
 
+#        yaml_data = self.get_argument("yaml_post_data","")
+#        path = yaml_data + saveFile
+#        print(path,"testだよ")
+#        if os.path.exists(path):
+#            subprocess.call(["sh", path])
+#        else:
+#            print("NG")
+ 
 def make_app():
     settings = {
     "static_path": os.path.join(os.path.dirname(__file__), "static"),

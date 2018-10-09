@@ -15,19 +15,20 @@ class MainHandler_post(tornado.web.RequestHandler):
 #        data = subprocess.check_output(["cat", post_data])
 #        print(data)
 #        data2 = requests.get(post_data)
-#        with open(data2,"r") as data1:
-#            post_data2 = data1.write(data2)
+        with open(post_data) as data1:
+            post_data2 = data1.read()
         
 
-#        data = subprocess.check_output(["cat", post_data])
-#        print(post_data2)
+        data = subprocess.check_output(["cat", post_data])
+        #print(data)
 
-#        DOWNLOAD_SAVE_DIR = "/Users/kanekoshohei/Documents/Git/Python/samurai/"
-#        saveFilePath = os.path.join(DOWNLOAD_SAVE_DIR, "test_post.py")
-#        with open(saveFilePath,"wb") as saveFile:
-#            saveFile.write(post_data)
-#        print(saveFile)
-#        subprocess.call(["sh", saveFile])
+        DOWNLOAD_SAVE_DIR = "/Users/kanekoshohei/Documents/Git/Python/samurai/"
+        saveFilePath = DOWNLOAD_SAVE_DIR + "test_post.py"
+        #print(saveFilePath)
+        with open(saveFilePath,"wb") as saveFile:
+            saveFile.write(data)
+        #print(saveFile)
+        subprocess.call(["python", saveFilePath])
 
 def make_app():
     settings = {

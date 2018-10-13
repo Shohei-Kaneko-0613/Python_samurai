@@ -14,9 +14,9 @@ print(data)
 
 
 if os.path.exists(data):
-    files = {"file": open(data,"rb")}
-    r = requests.post("http://localhost:8888/post_test/", files=files)
-    print(r.text)
+#    files = {"file": open(data,"rb")}
+    r = requests.post("http://localhost:8888/post_test/", files={"files_data":open("static/test_post.py","r")})
+    print(r.text,type(r))
 else:
     print("file is does not exist")
 

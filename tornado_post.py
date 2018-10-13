@@ -11,23 +11,23 @@ class MainHandler(tornado.web.RequestHandler):
         
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
-        post_data = self.get_argument("filename","test_post.py")
-#        data = subprocess.check_output(["cat", post_data])
-#        print(data)
-#        data2 = requests.get(post_data)
-        with open(post_data) as data1:
-            post_data2 = data1.read()
-        
+#        post_data = self.get_argument("filename","test_post.py")
+        post_data = self.request.files["files_data"][0]["body"].decode()
+        print(type(post_data),post_data)
+        file="test.txt"
+#        with open(file) as data1:
+#            post_data2 = data1.read()
+#        print(post_data2) 
 
-        data = subprocess.check_output(["cat", post_data])
+#        data = subprocess.check_output(["cat", post_data])
         #print(data)
 
         DOWNLOAD_SAVE_DIR = "/Users/kanekoshohei/Documents/Git/Python/samurai/"
         saveFilePath = DOWNLOAD_SAVE_DIR + "test_post.py"
         #print(saveFilePath)
-        with open(saveFilePath,"wb") as saveFile:
-            saveFile.write(data)
-        #print(saveFile)
+        with open(saveFilePath,mode="w") as saveFile:
+            saveFile.write(post_data)
+#            print(saveFile)
         subprocess.call(["python", saveFilePath])
 
 def make_app():

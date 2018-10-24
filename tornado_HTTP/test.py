@@ -17,12 +17,13 @@ def make_app():
     ])
 
 if __name__ == "__main__":
-    http_server = tornado.httpserver.HTTPServer(make_app, ssl_options={
+    app=make_app()
+    http_server = tornado.httpserver.HTTPServer(app, ssl_options={
         "certfile":"server.crt",
         "keyfile":"server.key",
     })
 
 #    app = make_app()
 #    app.listen(8888)
-    http_server.listen(443)
+    http_server.listen(8443)
 tornado.ioloop.IOLoop.current().start()

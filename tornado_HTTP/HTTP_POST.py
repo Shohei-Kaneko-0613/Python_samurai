@@ -27,9 +27,12 @@ elif response == "":
     data = "/Users/kanekoshohei/Documents/"+"test_post20.py"
     print(data)
     print(data2)
+    print(data==data2)
+    print(len(data))
+    print(len(data2))
 
 
-    if os.path.exists(data):
+    if os.path.exists(data2):
         r2 = requests.post("http://localhost:8888/post_test3/", files={"files_data":open("static/test_post.py","r")})
         print(r2.text,type(r2))
     else:

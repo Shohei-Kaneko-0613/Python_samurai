@@ -7,7 +7,7 @@ import subprocess
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("static/tornado_post_html.html")
+        self.render("../static/tornado_post_html.html")
 
 #ファイルの有無を確認し、ファイルがあればファイルパスをレスポンスする        
 class MainHandler_post(tornado.web.RequestHandler):
@@ -16,6 +16,7 @@ class MainHandler_post(tornado.web.RequestHandler):
         print(first_post)
         result = subprocess.check_output(["find" , "/Users/kanekoshohei/Documents/Git/Python/samurai" , "-name", first_post])
         print(result)
+        print(type(result))
         print(len(result))
         if 1 <= len(result): 
             self.write(result)

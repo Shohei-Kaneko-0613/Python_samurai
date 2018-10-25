@@ -10,15 +10,13 @@ class MainHandler2(tornado.web.RequestHandler):
     def get(self):
         self.write("Hello, samurai")
 
-def make_app():
-    return tornado.web.Application([
+make_app=tornado.web.Application([
         (r"/", MainHandler),
-	(r"/test/", MainHandler2),
-    ])
+	(r"/test/", MainHandler2),])
 
 if __name__ == "__main__":
-    app=make_app()
-    http_server = tornado.httpserver.HTTPServer(app, ssl_options={
+#    app=make_app()
+    http_server = tornado.httpserver.HTTPServer(make_app, ssl_options={
         "certfile":"server.crt",
         "keyfile":"server.key",
     })

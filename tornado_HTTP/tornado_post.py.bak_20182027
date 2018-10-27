@@ -4,7 +4,6 @@ import requests
 import os
 import json
 import subprocess
-import tornado.httpserver
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -49,18 +48,18 @@ class MainHandler_post3(tornado.web.RequestHandler):
         
 
 
-make_app=tornado.web.Application([
+def make_app():
+    settings = {
+    "static_path": os.path.join(os.path.dirname(__file__), "static"),
+}
+    return tornado.web.Application([
     (r"/", MainHandler),
     (r'/post_test/', MainHandler_post),
     (r'/post_test2/', MainHandler_post2),
     (r'/post_test3/', MainHandler_post3),
-])
-
+], **settings)
 
 if __name__ == "__main__":
-    http_server = tornado.httpserver.HTTPServer(make_app, ssl_options={
-        "certfile":"server.crt",
-        "keyfile":"server.key",
-    })
-    http_server.listen(8443)
-tornado.ioloop.IOLoop.current().start()
+    app = make_app()
+    app.listen(8888)
+    tornado.ioloop.IOLoop.current().start()

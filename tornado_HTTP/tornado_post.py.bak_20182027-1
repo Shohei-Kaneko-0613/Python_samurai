@@ -9,34 +9,28 @@ import tornado.httpserver
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("../static/tornado_post_html.html")
-        
+
 #ファイルの有無を確認し、ファイルがあればファイルパスをレスポンスする        
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
         first_post = self.get_argument("files_data2")
-        #print(type(first_post))
-        
-        result = subprocess.check_output(["python", "column_search.py" ])
-        #print(result)
-        #print(type(result))
-        #print(len(result))
+        print(first_post)
+        result = subprocess.check_output(["find" , "/Users/kanekoshohei/Documents/Git/Python/samurai" , "-name", first_post])
+        print(result)
+        print(type(result))
+        print(len(result))
         if 1 <= len(result): 
-            self.write("file search OK")
+            self.write(result)
         else:
             self.write("")
-            subprocess.call(["python","create_column.py"])
 
 #MainHandler_postでファイル有無の判定で有りの場合、ファイルの実行を行う
 class MainHandler_post2(tornado.web.RequestHandler):
     def post(self):
         
         second_post = self.get_argument("files_data3")
-        print(type(second_post))
-        result = subprocess.check_output(["python", "column_search.py"])
-        result2=result.decode().strip()
-        #data=result2 + second_post
-        print(result2)
-        subprocess.call(["python",result2])
+        print(second_post)
+        subprocess.call(["python",second_post])
         
 #MainHandler_postの判定でファイルが無ければ、ファイルを作成して実行する
 class MainHandler_post3(tornado.web.RequestHandler):

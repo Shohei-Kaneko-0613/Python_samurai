@@ -5,6 +5,7 @@ import os
 import json
 import subprocess
 import tornado.httpserver
+from db_search import search
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -17,9 +18,6 @@ class MainHandler_post(tornado.web.RequestHandler):
         #print(type(first_post))
         
         result = subprocess.check_output(["python", "column_search.py" ])
-        #print(result)
-        #print(type(result))
-        #print(len(result))
         if 1 <= len(result): 
             self.write("file search OK")
         else:
@@ -29,14 +27,8 @@ class MainHandler_post(tornado.web.RequestHandler):
 #MainHandler_postでファイル有無の判定で有りの場合、ファイルの実行を行う
 class MainHandler_post2(tornado.web.RequestHandler):
     def post(self):
-        
         second_post = self.get_argument("files_data3")
-        print(type(second_post))
-        result = subprocess.check_output(["python", "column_search.py"])
-        result2=result.decode().strip()
-        #data=result2 + second_post
-        print(result2)
-        subprocess.call(["python",result2])
+        subprocess.call(["python",search()])
         
 #MainHandler_postの判定でファイルが無ければ、ファイルを作成して実行する
 class MainHandler_post3(tornado.web.RequestHandler):

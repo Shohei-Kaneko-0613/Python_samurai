@@ -31,7 +31,7 @@ class MainHandler_post(tornado.web.RequestHandler):
 #select文で検索ヒットすればTrue            
         if 1 <= len(path): 
             self.write("file search OK")
-#select文で検索ヒットしなければFalse
+#select文で検索ヒットしなければFalse,DBにカラム追加
         else:
             self.write("")
             con = sqlite3.connect("test_data.db")

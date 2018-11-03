@@ -5,7 +5,7 @@ import os
 import json
 import subprocess
 import tornado.httpserver
-import sqlite3
+from db_search import search
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -15,44 +15,20 @@ class MainHandler(tornado.web.RequestHandler):
 class MainHandler_post(tornado.web.RequestHandler):
     def post(self):
         first_post = self.get_argument("files_data2")
+        #print(type(first_post))
         
-#DB検索
-        path=""
-        con = sqlite3.connect("test_data.db")
-        cur = con.cursor()
-        sql3 = "select * from fruits where name='test_post20.py'"
-        cur.execute(sql3)
-        for row in cur:
-            path=row[1]
-            print(path)
-        con.close()
-
-
-#select文で検索ヒットすればTrue            
-        if 1 <= len(path): 
+        result = subprocess.check_output(["python", "column_search.py" ])
+        if 1 <= len(result): 
             self.write("file search OK")
-#select文で検索ヒットしなければFalse
         else:
             self.write("")
-            con = sqlite3.connect("test_data.db")
-            cur = con.cursor()
-            sql2 = "insert into fruits values('test_post20.py', '/Users/kanekoshohei/Documents/Git/Python/samurai/test_post20.py')"
-            cur.execute(sql2)
-            con.commit()
-            con.close()
+            subprocess.call(["python","create_column.py"])
 
 #MainHandler_postでファイル有無の判定で有りの場合、ファイルの実行を行う
 class MainHandler_post2(tornado.web.RequestHandler):
     def post(self):
         second_post = self.get_argument("files_data3")
-        DB_file = "test_data.db"
-        connection = sqlite3.connect(DB_file)
-        cur = connection.cursor()
-        sql3 = "select * from fruits where name='test_post20.py'"
-        cur.execute(sql3)
-        for row in cur:
-            path=row[1]        
-        subprocess.call(["python",path])
+        subprocess.call(["python",search()])
         
 #MainHandler_postの判定でファイルが無ければ、ファイルを作成して実行する
 class MainHandler_post3(tornado.web.RequestHandler):

@@ -27,6 +27,7 @@ elif response == "":
 
     data2 = path + data
     data = "/Users/kanekoshohei/Documents/"+"test_post20.py"
+
     print(data)
     print(data2)
     print(data==data2)
@@ -39,4 +40,3 @@ elif response == "":
         print(r2.text,type(r2))
     else:
         print("file is does not exist")
-
